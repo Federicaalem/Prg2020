@@ -54,6 +54,7 @@ namespace ArregloNombres.f
         private void btnDimensional_Click(object sender, EventArgs e)
        
           //Dimensionamos desde aqui
+          //Inicializamos el arreglo Lista Aqui!
         {
             Lista = new string[System.Convert.ToInt32(txtCantidad.Text)];
             Posicion = 0;//Redimensionar
