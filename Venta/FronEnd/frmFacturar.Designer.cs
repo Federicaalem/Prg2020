@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panelEncabezado = new System.Windows.Forms.Panel();
+            this.lblErrorEncabezado = new System.Windows.Forms.Label();
+            this.btnConfirmar = new System.Windows.Forms.Button();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.txtNumeroF = new System.Windows.Forms.TextBox();
@@ -45,19 +47,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPrUnitario = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtProducto = new System.Windows.Forms.TextBox();
             this.txtCantidadP = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnCargarProduc = new System.Windows.Forms.Button();
+            this.btnNuevoRNG = new System.Windows.Forms.Button();
             this.panelPie = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblIva = new System.Windows.Forms.Label();
+            this.lblBruto = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.lblBruto = new System.Windows.Forms.Label();
-            this.lblIva = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.btnConfirmar = new System.Windows.Forms.Button();
-            this.lblErrorEncabezado = new System.Windows.Forms.Label();
             this.panelEncabezado.SuspendLayout();
             this.panelRenglones.SuspendLayout();
             this.panelPie.SuspendLayout();
@@ -81,6 +81,25 @@
             this.panelEncabezado.Name = "panelEncabezado";
             this.panelEncabezado.Size = new System.Drawing.Size(807, 110);
             this.panelEncabezado.TabIndex = 0;
+            // 
+            // lblErrorEncabezado
+            // 
+            this.lblErrorEncabezado.AutoSize = true;
+            this.lblErrorEncabezado.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorEncabezado.Location = new System.Drawing.Point(23, 82);
+            this.lblErrorEncabezado.Name = "lblErrorEncabezado";
+            this.lblErrorEncabezado.Size = new System.Drawing.Size(0, 13);
+            this.lblErrorEncabezado.TabIndex = 22;
+            // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.Location = new System.Drawing.Point(669, 82);
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(115, 23);
+            this.btnConfirmar.TabIndex = 21;
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // txtCliente
             // 
@@ -165,10 +184,10 @@
             this.panelRenglones.Controls.Add(this.label7);
             this.panelRenglones.Controls.Add(this.label4);
             this.panelRenglones.Controls.Add(this.txtPrUnitario);
-            this.panelRenglones.Controls.Add(this.textBox7);
+            this.panelRenglones.Controls.Add(this.txtProducto);
             this.panelRenglones.Controls.Add(this.txtCantidadP);
             this.panelRenglones.Controls.Add(this.label3);
-            this.panelRenglones.Controls.Add(this.btnCargarProduc);
+            this.panelRenglones.Controls.Add(this.btnNuevoRNG);
             this.panelRenglones.Enabled = false;
             this.panelRenglones.Location = new System.Drawing.Point(13, 128);
             this.panelRenglones.Name = "panelRenglones";
@@ -225,12 +244,12 @@
             this.txtPrUnitario.Size = new System.Drawing.Size(100, 20);
             this.txtPrUnitario.TabIndex = 13;
             // 
-            // textBox7
+            // txtProducto
             // 
-            this.textBox7.Location = new System.Drawing.Point(188, 33);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(324, 20);
-            this.textBox7.TabIndex = 14;
+            this.txtProducto.Location = new System.Drawing.Point(188, 33);
+            this.txtProducto.Name = "txtProducto";
+            this.txtProducto.Size = new System.Drawing.Size(324, 20);
+            this.txtProducto.TabIndex = 14;
             // 
             // txtCantidadP
             // 
@@ -248,14 +267,15 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Cantidad de productos";
             // 
-            // btnCargarProduc
+            // btnNuevoRNG
             // 
-            this.btnCargarProduc.Location = new System.Drawing.Point(692, 65);
-            this.btnCargarProduc.Name = "btnCargarProduc";
-            this.btnCargarProduc.Size = new System.Drawing.Size(102, 23);
-            this.btnCargarProduc.TabIndex = 1;
-            this.btnCargarProduc.Text = "Cargar Producto";
-            this.btnCargarProduc.UseVisualStyleBackColor = true;
+            this.btnNuevoRNG.Location = new System.Drawing.Point(692, 65);
+            this.btnNuevoRNG.Name = "btnNuevoRNG";
+            this.btnNuevoRNG.Size = new System.Drawing.Size(102, 23);
+            this.btnNuevoRNG.TabIndex = 1;
+            this.btnNuevoRNG.Text = "Cargar Producto";
+            this.btnNuevoRNG.UseVisualStyleBackColor = true;
+            this.btnNuevoRNG.Click += new System.EventHandler(this.btnNuevoRNG_Click);
             // 
             // panelPie
             // 
@@ -270,6 +290,39 @@
             this.panelPie.Name = "panelPie";
             this.panelPie.Size = new System.Drawing.Size(807, 111);
             this.panelPie.TabIndex = 1;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(692, 76);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(100, 23);
+            this.lblTotal.TabIndex = 8;
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblIva
+            // 
+            this.lblIva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblIva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIva.Location = new System.Drawing.Point(692, 41);
+            this.lblIva.Name = "lblIva";
+            this.lblIva.Size = new System.Drawing.Size(100, 23);
+            this.lblIva.TabIndex = 7;
+            this.lblIva.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblBruto
+            // 
+            this.lblBruto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblBruto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblBruto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBruto.Location = new System.Drawing.Point(692, 3);
+            this.lblBruto.Name = "lblBruto";
+            this.lblBruto.Size = new System.Drawing.Size(100, 23);
+            this.lblBruto.TabIndex = 6;
+            this.lblBruto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
@@ -294,58 +347,6 @@
             this.label9.Size = new System.Drawing.Size(47, 23);
             this.label9.TabIndex = 0;
             this.label9.Text = "BRUTO";
-            // 
-            // lblBruto
-            // 
-            this.lblBruto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblBruto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblBruto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBruto.Location = new System.Drawing.Point(692, 3);
-            this.lblBruto.Name = "lblBruto";
-            this.lblBruto.Size = new System.Drawing.Size(100, 23);
-            this.lblBruto.TabIndex = 6;
-            this.lblBruto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblIva
-            // 
-            this.lblIva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblIva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIva.Location = new System.Drawing.Point(692, 41);
-            this.lblIva.Name = "lblIva";
-            this.lblIva.Size = new System.Drawing.Size(100, 23);
-            this.lblIva.TabIndex = 7;
-            this.lblIva.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(692, 76);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(100, 23);
-            this.lblTotal.TabIndex = 8;
-            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnConfirmar
-            // 
-            this.btnConfirmar.Location = new System.Drawing.Point(669, 82);
-            this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(115, 23);
-            this.btnConfirmar.TabIndex = 21;
-            this.btnConfirmar.Text = "Confirmar";
-            this.btnConfirmar.UseVisualStyleBackColor = true;
-            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
-            // 
-            // lblErrorEncabezado
-            // 
-            this.lblErrorEncabezado.AutoSize = true;
-            this.lblErrorEncabezado.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorEncabezado.Location = new System.Drawing.Point(23, 82);
-            this.lblErrorEncabezado.Name = "lblErrorEncabezado";
-            this.lblErrorEncabezado.Size = new System.Drawing.Size(0, 13);
-            this.lblErrorEncabezado.TabIndex = 22;
             // 
             // frmFacturar
             // 
@@ -377,13 +378,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnNueva;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnCargarProduc;
+        private System.Windows.Forms.Button btnNuevoRNG;
         private System.Windows.Forms.TextBox txtCuit;
         private System.Windows.Forms.Panel panelRenglones;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panelPie;
         private System.Windows.Forms.TextBox txtPrUnitario;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtProducto;
         private System.Windows.Forms.TextBox txtCantidadP;
         private System.Windows.Forms.TextBox txtTotalRNG;
         private System.Windows.Forms.Label label8;

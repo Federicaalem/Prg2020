@@ -15,22 +15,75 @@ namespace FronEnd //Formulario
     {
         //Objeto tipo factura(clase)//Backend
 
+        //Instanciamos los Obj
+        #region PROPIEDADES
         FacturaC facturaObj;
+        RNGFactura rngFacturaObj;
+        #endregion
 
+        #region CONSTRUCTOR
         public frmFacturar()
         {
             InitializeComponent();
         }
-
-         # region METODOS
-
-
+        #endregion
+       
+        #region EVENTOS
         private void btnNueva_Click(object sender, EventArgs e)
         {
             LimpiarControles();
             NuevaFactura();
             lblBruto.Text = "10,05";
         }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            LimpiarBlancoEncab();
+            //Validar datos
+            //TxtCliente ya viene en blanco. 
+            if (txtCliente.Text.Trim() == "" || txtNumeroF.Text == "" || txtCuit.Text == "")
+            {
+                lblErrorEncabezado.Text = "Faltan datos de encabezado";
+                txtNumeroF.Focus();
+            }
+            else
+            {
+                //Propiedades de encabezado
+                //Nueva factura
+                facturaObj.NumeroFactura = txtNumeroF.Text;
+                facturaObj.Cliente = txtCliente.Text;
+                facturaObj.CUIT = txtCuit.Text;
+                facturaObj.Fecha = System.Convert.ToDateTime(txtFecha.Text);
+
+                //Se habilitará panel Renglones cuando aprete confirmar
+                //Llenar las propiedades del encabezado
+                lblErrorEncabezado.Text = "";
+                panelRenglones.Enabled = true;
+                txtCantidadP.Focus();
+            }
+
+
+        }
+
+        private void btnNuevoRNG_Click(object sender, EventArgs e)
+        {
+            //Inicializamos el Obj
+            rngFacturaObj = new RNGFactura();
+            //Asignamos Valores
+            rngFacturaObj.Cantidad = System.Convert.ToDecimal(txtCantidadP.Text);
+            rngFacturaObj.Producto = txtProducto.Text;
+            rngFacturaObj.precioUnitario = System.Convert.ToDecimal(txtPrUnitario.Text);
+
+            // txtTotalRNG.Text = System.Convert.ToString(rngFacturaObj.TOTAL());
+            txtTotalRNG.Text= rngFacturaObj.TOTAL().ToString("#,##0.00");
+
+            facturaObj.AddRenglon(rngFacturaObj);
+
+            MuestraRenglones();
+        }
+        #endregion
+
+        #region METODOS
         private void LimpiarControles()
         {
             
@@ -56,35 +109,6 @@ namespace FronEnd //Formulario
             txtNumeroF.Focus(); 
         }
 
-        private void btnConfirmar_Click(object sender, EventArgs e)
-        {
-            LimpiarBlancoEncab();
-            //Validar datos
-            //TxtCliente ya viene en blanco. 
-            if (txtCliente.Text.Trim () =="" || txtNumeroF.Text == "" || txtCuit.Text =="")
-            {
-                lblErrorEncabezado.Text = "Faltan datos de encabezado";
-                txtNumeroF.Focus();
-            }            
-            else
-            {
-                //Propiedades de encabezado
-                //Nueva factura
-                facturaObj.NumeroFactura = txtNumeroF.Text;
-                facturaObj.Cliente = txtCliente.Text;
-                facturaObj.CUIT = txtCuit.Text;
-                facturaObj.Fecha = System.Convert.ToDateTime(txtFecha.Text);
-
-                //Se habilitará panel Renglones cuando aprete confirmar
-                //Llenar las propiedades del encabezado
-                lblErrorEncabezado.Text = "";
-                panelRenglones.Enabled = true;
-                txtCantidadP.Focus();
-            }
-
-            
-        }
-   
         private void LimpiarBlancoEncab()
         {
             txtCliente.Text = txtCliente.Text.Trim();
@@ -92,6 +116,14 @@ namespace FronEnd //Formulario
             txtCuit.Text = txtCliente.Text.Trim();
 
         }
+
+        private void MuestraRenglones()
+        {
+            lblRenglones.Text = rngFacturaObj.MuestraRenglon();
+        }
+
         #endregion
+
+       
     }
 }

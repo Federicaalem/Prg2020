@@ -23,6 +23,16 @@ namespace BackEnd
         {
             return Cantidad * precioUnitario;
         }
+
+        public string MuestraRenglon()
+        {
+            return Cantidad.ToString("#,##0.00") + " - "
+                + Producto + "  "
+                + precioUnitario.ToString("#,##0.00")
+                + "  "
+                + TOTAL().ToString("#,##0.00");
+        }
+       
         #endregion
     }
 }
