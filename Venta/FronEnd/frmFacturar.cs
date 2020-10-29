@@ -33,7 +33,7 @@ namespace FronEnd //Formulario
         {
             LimpiarControles();
             NuevaFactura();
-            lblBruto.Text = "10,05";
+            
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
@@ -70,16 +70,23 @@ namespace FronEnd //Formulario
             //Inicializamos el Obj
             rngFacturaObj = new RNGFactura();
             //Asignamos Valores
-            rngFacturaObj.Cantidad = System.Convert.ToDecimal(txtCantidadP.Text);
+            rngFacturaObj.Cantidad = System.Convert.ToInt32(txtCantidadP.Text);
             rngFacturaObj.Producto = txtProducto.Text;
             rngFacturaObj.precioUnitario = System.Convert.ToDecimal(txtPrUnitario.Text);
 
             // txtTotalRNG.Text = System.Convert.ToString(rngFacturaObj.TOTAL());
-            txtTotalRNG.Text= rngFacturaObj.TOTAL().ToString("#,##0.00");
+            txtTotalRNG.Text = rngFacturaObj.TOTALRng().ToString("#,##0.00");
 
             facturaObj.AddRenglon(rngFacturaObj);
+                        
+            lblRenglones.Text = facturaObj.MuestraRenglones();//lista
 
-            MuestraRenglones();
+          
+
+            //Muestre los calculos
+            lblNeto.Text= facturaObj.Neto.ToString();
+            lblIva.Text = facturaObj.Iva.ToString();
+            lblTotal.Text = facturaObj.Total.ToString();
         }
         #endregion
 
@@ -91,7 +98,7 @@ namespace FronEnd //Formulario
             txtCuit.Text = "";
             txtFecha.Text = "";            
             txtNumeroF.Text = "";            
-            lblBruto.Text = "";
+            lblNeto.Text = "";
             lblIva.Text = "";
             lblTotal.Text = "";
 
@@ -117,13 +124,9 @@ namespace FronEnd //Formulario
 
         }
 
-        private void MuestraRenglones()
-        {
-            lblRenglones.Text = rngFacturaObj.MuestraRenglon();
-        }
+        
 
         #endregion
-
-       
+        
     }
 }

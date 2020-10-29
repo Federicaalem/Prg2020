@@ -54,7 +54,7 @@
             this.panelPie = new System.Windows.Forms.Panel();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblIva = new System.Windows.Forms.Label();
-            this.lblBruto = new System.Windows.Forms.Label();
+            this.lblNeto = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -282,7 +282,7 @@
             this.panelPie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelPie.Controls.Add(this.lblTotal);
             this.panelPie.Controls.Add(this.lblIva);
-            this.panelPie.Controls.Add(this.lblBruto);
+            this.panelPie.Controls.Add(this.lblNeto);
             this.panelPie.Controls.Add(this.label11);
             this.panelPie.Controls.Add(this.label10);
             this.panelPie.Controls.Add(this.label9);
@@ -313,22 +313,22 @@
             this.lblIva.TabIndex = 7;
             this.lblIva.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblBruto
+            // lblNeto
             // 
-            this.lblBruto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lblBruto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblBruto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBruto.Location = new System.Drawing.Point(692, 3);
-            this.lblBruto.Name = "lblBruto";
-            this.lblBruto.Size = new System.Drawing.Size(100, 23);
-            this.lblBruto.TabIndex = 6;
-            this.lblBruto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblNeto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lblNeto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblNeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNeto.Location = new System.Drawing.Point(692, 3);
+            this.lblNeto.Name = "lblNeto";
+            this.lblNeto.Size = new System.Drawing.Size(100, 23);
+            this.lblNeto.TabIndex = 6;
+            this.lblNeto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
             this.label11.Location = new System.Drawing.Point(629, 81);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 13);
+            this.label11.Size = new System.Drawing.Size(47, 18);
             this.label11.TabIndex = 4;
             this.label11.Text = "TOTAL";
             // 
@@ -346,7 +346,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(47, 23);
             this.label9.TabIndex = 0;
-            this.label9.Text = "BRUTO";
+            this.label9.Text = "NETO";
             // 
             // frmFacturar
             // 
@@ -396,7 +396,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblIva;
-        private System.Windows.Forms.Label lblBruto;
+        private System.Windows.Forms.Label lblNeto;
         private System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.Label lblErrorEncabezado;
     }

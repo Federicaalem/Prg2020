@@ -9,7 +9,7 @@ namespace BackEnd
     public class RNGFactura
     {
         #region PROPIEDADES
-        public decimal Cantidad = 0;
+        public int Cantidad = 0;
         public string Producto = "";
         public decimal precioUnitario = 0;
         #endregion
@@ -19,20 +19,25 @@ namespace BackEnd
         #endregion
 
         #region METODOS
-        public decimal TOTAL() 
+        public decimal TOTALRng() 
         {
             return Cantidad * precioUnitario;
         }
 
         public string MuestraRenglon()
-        {
-            return Cantidad.ToString("#,##0.00") + " - "
+        {            
+            return Cantidad + " - "
                 + Producto + "  "
-                + precioUnitario.ToString("#,##0.00")
+                + precioUnitario.ToString(" c/u $" + "#,##0.00")
                 + "  "
-                + TOTAL().ToString("#,##0.00");
+                + TOTALRng().ToString("T $" + "#,##0.00");
+
         }
-       
+
+
+
+        
+
         #endregion
     }
 }
